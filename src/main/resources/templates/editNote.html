@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Notepad</title>
+</head>
+
+<body>
+<form th:action="@{/notes}" method="get">
+    <input type="submit" value="Back to Notes">
+</form>
+<h3>Edit Note</h3>
+
+<form id="note" th:object="${editNote}" th:action="@{/saveEditedNote}" method="post">
+
+    <h4>Edit Note Title</h4>
+    <input type="text" th:field="*{id}" hidden="true">
+    <input type="text" placeholder="Type Title Here" th:field="*{header}">
+
+
+    <h4>Edit Note Text</h4>
+    <textarea rows="4" cols="50" name="comment" form="note" th:field="${editNote.text}" placeholder="Enter text here"></textarea><br>
+    <input type="submit" value="Save Note">
+</form>
+</body>
+</html>

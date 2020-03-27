@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Notepad</title>
+</head>
+
+<body>
+
+<h2>Notepad</h2>
+<h3>Notes</h3>
+<button>
+    <a style="text-decoration:none; color:black" type="button"
+       th:href="@{newNote}">Create New Note</a>
+</button>
+<br><br>
+<table style="border: 1px solid #AAAAAA; width: 500px; padding: 3px 4px;">
+    <thead>
+    <tr style="text-align: left; width: 25%">
+        <th scope="col">Title</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="note: ${notes}">
+        <td th:text="${note.getHeader()}"></td>
+        <td>
+            <button>
+                <a style="text-decoration:none; color:black" type="button"
+                   th:href="@{|/edit-note/${note.id}|}">Edit</a>
+
+            </button>
+        </td>
+        <td>
+            <button>
+                <a style="text-decoration:none; color:black" type="button"
+                   th:href="@{|/delete-note/${note.id}|}">Delete</a>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<form>
+
+</form>
+
+</body>
+</html>
